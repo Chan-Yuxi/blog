@@ -20,7 +20,7 @@
 
 @layer base {
   * {
-    @apply text-[color:--foreground] border-[color:--border] transition-colors duration-300;
+    @apply text-[color:--foreground] border-[color:--border] transition-colors duration-200;
   }
 
   body {

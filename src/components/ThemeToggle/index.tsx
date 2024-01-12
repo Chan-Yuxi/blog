@@ -3,6 +3,8 @@
 import type { Theme } from "../ThemeProvider";
 import { useTheme } from "../ThemeProvider";
 
+import { Sun, Moon } from "lucide-react";
+
 import { combineClassNames } from "@/utils";
 
 export default function ThemeToggle() {
@@ -25,6 +27,10 @@ export default function ThemeToggle() {
             {option}
           </li>
         ))}
+        <button>
+          <Sun/>
+          <Moon />
+        </button>
       </ul>
     </div>
   );
