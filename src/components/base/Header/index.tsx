@@ -13,7 +13,7 @@ import {
 import ThemeToggle from "@/components/base/Theme/toggle";
 import Link from "next/link";
 
-const menuItems = ["Profile"];
+const menuItems = ["Explore", "Article", "Profile"];
 
 export default function Header() {
   return (
@@ -26,7 +26,7 @@ export default function Header() {
       <NavbarContent justify="end">
         {menuItems.map((item, i) => (
           <NavbarItem className="hidden sm:block" key={i}>
-            <Link href="/profile">{item}</Link>
+            <Link href="#">{item}</Link>
           </NavbarItem>
         ))}
         <NavbarItem className="sm:ms-8">
@@ -40,7 +40,7 @@ export default function Header() {
       <NavbarMenu>
         {menuItems.map((item, i) => (
           <NavbarMenuItem key={i}>
-            <Link href="/profile">{item}</Link>
+            <Link href="#">{item}</Link>
           </NavbarMenuItem>
         ))}
       </NavbarMenu>
