@@ -4,12 +4,16 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
+import Provider from "./provider";
+import ThemeProvider from "@/components/base/Theme/provider";
+
+import Header from "@/components/base/Header";
+import Footer from "@/components/base/Footer";
+
 export const metadata: Metadata = {
   title: "Welcome My Blog",
   description: "Written by ChanYuxi",
 };
-
-import ThemeProvider from "@/components/ThemeProvider";
 
 export default function RootLayout({
   children,
@@ -19,7 +23,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <Provider>
+          <ThemeProvider defaultTheme="system">
+            <Header />
+            {children}
+            <Footer />
+          </ThemeProvider>
+        </Provider>
       </body>
     </html>
   );

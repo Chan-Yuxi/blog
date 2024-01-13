@@ -15,13 +15,25 @@ const ThemeProviderContext = createContext<{
 });
 
 export default function ThemeProvider({
+  defaultTheme,
   children,
 }: {
+  defaultTheme: Theme;
   children: React.ReactNode;
 }) {
-  const [theme, setTheme] = useState<Theme>(
-    getItem(STORAGE_THEME_KEY) || "system"
-  );
+  const [theme, setTheme] = useState<Theme>(defaultTheme);
+
+  // Why is it not useState<Theme>(getItem(STORAGE_THEME_KEY) || defaultTheme)?
+  // In Nextjs, even client components perform pre rendering on the server,
+  // so getItem will access the window object, which does not exist in the node environment,
+  // triggering an insignificant error.
+  // Encapsulate the operations that require the use of window into useEffect to avoid running during server-side pre rendering.
+  useEffect(() => {
+    const cacheTheme = getItem(STORAGE_THEME_KEY);
+    if (cacheTheme) {
+      setTheme(cacheTheme);
+    }
+  }, []);
 
   useEffect(() => {
     const htmlElement = document.documentElement;

@@ -7,7 +7,11 @@ function getItem(key: string) {
   if (!item) {
     return null;
   }
-  return JSON.parse(item);
+  try {
+    return JSON.parse(item);
+  } catch {
+    return null;
+  }
 }
 
 function deleteItem(key: string) {
@@ -23,7 +27,11 @@ function getSessionItem(key: string) {
   if (!item) {
     return null;
   }
-  return JSON.parse(item);
+  try {
+    return JSON.parse(item);
+  } catch {
+    return null;
+  }
 }
 
 function deleteSessionItem(key: string) {

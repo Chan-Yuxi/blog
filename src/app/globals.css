@@ -27,3 +27,9 @@
     @apply bg-[--background];
   }
 }
+
+@layer utilities {
+  .container {
+    @apply max-w-[1024px] px-6;
+  }
+}
